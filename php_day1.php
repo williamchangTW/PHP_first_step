@@ -77,3 +77,81 @@ foreach ($order_recieve as $key => $val)
 }
 
 // case 2: class
+class Hero
+{
+    public $name;
+    public $stats_hp;
+    public $stats_mp;
+    public $stats_atk;
+    public $stats_def;
+    public $stats_1;
+    public $stats_2;
+    public $stats_3;
+    public $stats_4;
+    public $article;
+}
+
+$heroBox = new Hero();
+$heroBox->name = "Valhein";
+$heroBox->stats_hp = 100;
+$heroBox->stats_mp = 50;
+$heroBox->stats_atk = 60;
+$heroBox->stats_def = 40;
+
+//case 3: advanced class
+class Stats
+{
+    public $hp;
+    public $mp;
+    public $atk;
+    public $def;
+    public function __construct($sourceHp, $sourceMp, $sourceAtk, $sourceDef)
+    {
+        $this->hp = $sourceHp;
+        $this->mp = $sourceMp;
+        $this->atk = $sourceAtk;
+        $this->def = $sourceDef;
+    }
+}
+
+class Skill
+{
+    public $name;
+    public $description;
+    public function __construct($sourceName, $sourceDescription)
+    {
+        $this->name = $sourceName;
+        $this->description = $sourceDescription;
+    }
+}
+
+class Hero_New
+{
+    public $name;
+    public $stats;
+    public $skills;
+    public $article;
+    function __construct($sourceName, $sourceStats, $sourceSkills, $sourceArticle)
+    {
+        $this->name = $sourceName;
+        $this->stats = $sourceStats;
+        $this->skills = $sourceSkills;
+        $this->article = $sourceArticle;
+    }
+}
+$sourceName = "Valhein";
+$sourceStats = new Stats(100, 80, 40, 20); // (hp, mp, atk, def)
+$sourceSkills[] = new Skill("skill1", "bla");
+$sourceSkills[] = new Skill("skill2", "bla");
+$sourceSkills[] = new Skill("skill3", "bla");
+$sourceSkills[] = new Skill("skill4", "bla");
+$sourceArticle = "skip";
+$hero = new Hero_New($sourceName, $sourceStats, $sourceSkills, $sourceArticle);
+
+echo $hero->name."\n";
+echo $hero->stats->hp."\n";
+echo $hero->skills[0]->name."\n";
+echo $hero->skills[1]->name."\n";
+echo $hero->skills[2]->name."\n";
+echo $hero->skills[3]->name."\n";
+echo $hero->article."\n";
